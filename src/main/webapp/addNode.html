@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/bootstrap-table.css">
+
+    <!-- 设置baseUrl为assets/js目录 -->
+    <script data-main="assets/js/require.config" src="assets/js/require.js"></script>
+
+    <!-- 如果没有在require.config.js中指定baseUrl，那么默认的baseUrl为包含RequireJS的那个html页面的所属目录 -->
+    <!--<script type="text/javascript" src="assets/js/require.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/require.config.js"></script>-->
+    <script>
+        require(['addnode'], function () {})
+    </script>
+
+</head>
+<body>
+<div style="margin: 30px;">
+    <h3>添加主机</h3>
+    <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#newhost" aria-controls="newhost" role="tab" data-toggle="tab">添加新主机</a></li>
+            <li role="presentation"><a href="#managedhost" aria-controls="managedhost" role="tab" data-toggle="tab">当前受管理的主机(3)</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="newhost">
+                <h5>输入IP或主机名</h5>
+                <div style="margin-top: 10px;">
+                    <textarea class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form-inline" style="position: absolute;margin-top: 10px;right: 40px;">
+                    <div style="float: right;">
+                        <button class="btn btn-default" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索</button>
+                    </div>
+                    <div style="float: right;">
+                        SSH端口<input class="form-control" style="width: 80px;margin-right: 5px;" />
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="managedhost">
+                <div class="bars pull-left">
+                    <div id="custom-toolbar">
+                        <div class="form-inline" role="form" style="margin: 10px 0;">
+                            <div class="form-group">
+                                <label class="control-label" for="hostname">主机名</label>
+                                <input class="form-control" id="hostname" name="hostname" style="width:150px;"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="ip">IP</label>
+                                <input class="form-control" id="ip" name="ip" style="width:150px;"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="rack">机架</label>
+                                <input class="form-control" id="rack" name="rack" style="width:150px;"/>
+                            </div>
+
+                            <button class="btn btn-default" onclick="queryHost()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="hostTable"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div style="position: absolute;bottom: 20px;height: 40px;width: 100%;">
+    <div style="position: absolute;left: 40px;">
+        <button class="btn btn-default" id="back"><span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>上一步</button>
+    </div>
+    <div style="position: absolute;right: 40px;">
+        <button class="btn btn-default" id="next">下一步<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span></button>
+    </div>
+</div>
+</body>
+</html>
